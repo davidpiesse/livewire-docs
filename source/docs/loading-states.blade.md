@@ -95,3 +95,27 @@ Similar to classes, HTML attributes can be added or removed from elements during
 @endcode
 
 Now, when the "Checkout" button is clicked, the `disabled="true"` attribute will be added to the element while loading.
+
+## Delaying loading
+
+Sometimes you might only want to show the loading state after something takes longer than Xms. By adding .after you can acheive this. The default delay is 500ms but you can customize this by including a time delay modifier such as loading.after.250ms.
+
+@code(['lang' => 'html'])
+<div>
+    <button wire:click="checkout" wire:loading.after.class="bg-gray">
+        Checkout
+    </button>
+</div>
+@endcode
+
+## Minimum loading period
+
+If you have a quick response you might not want to show a 'flash' of a loading state. To counteract this you can use .min with your loading directive. The loading state will persist for a minimin time before reverting ensuring no flicker. The default is 500ms.
+
+@code(['lang' => 'html'])
+<div>
+    <button wire:click="checkout" wire:loading.min.class="bg-gray">
+        Checkout
+    </button>
+</div>
+@endcode
